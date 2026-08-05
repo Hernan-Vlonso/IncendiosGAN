@@ -1,6 +1,8 @@
 # IncendiosGAN — Wildfire Propagation via Conditional GAN
 
-Generación de mapas sintéticos de propagación de incendios forestales en milisegundos, condicionados por dirección de viento, topografía y vegetación. Trabajo de título — Ingeniería Civil Informática, UTFSM.
+![Python](https://img.shields.io/badge/Python-3.12-blue) ![PyTorch](https://img.shields.io/badge/PyTorch-2.5-ee4c2c) ![CUDA](https://img.shields.io/badge/CUDA-12.1-76b900)
+
+Generación de mapas sintéticos de propagación de incendios forestales en milisegundos, condicionados por dirección de viento, topografía y vegetación — enabling real-time spread prediction for early warning and emergency response.
 
 ---
 
@@ -36,6 +38,8 @@ This project implements a **conditional GAN (cGAN)** that generates probabilisti
 | AC-GAN accuracy (referential CA) | ~79% |
 
 Checkpoint selected at epoch 70 — first checkpoint with SSIM > 0.50 under 70% masking.
+
+*FID reflects the probabilistic nature of the output — the generator models the central tendency of the fire spread distribution rather than individual stochastic realizations, which inflates pixel-level divergence metrics.*
 
 ![Training Evolution](docs/figures/fig_training_evolution_run48.png)
 ![Directional Validation](docs/figures/directional_centroid_validation_run48.png)
