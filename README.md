@@ -57,10 +57,12 @@ The model conditions on:
 
 ```bash
 pip install -r requirements.txt
-python app.py --checkpoint outputs/checkpoints/run48/checkpoint_best_final.pt
+python app.py
 ```
 
-Opens a Gradio web interface at `http://localhost:7860` with sliders for all meteorological inputs, wind direction and topology dropdowns, and multi-sample generation.
+Opens a Gradio web interface at `http://localhost:7860`. Pick a historical CONAF fire (with its real vegetation and conditions), then change wind direction, weather, burned area or mark any field as unknown. Each run renders several samples as propagation heatmaps with the expected downwind direction, the angular deviation of each sample, and a per-direction confidence indicator taken from the validation table (SE is the weakest direction, 34.2° angular error).
+
+The demo runs from `demo/` (EMA generator weights, 20 MB, plus 16 curated fires). To regenerate it from the full dataset and checkpoint: `python scripts/11_export_demo_assets.py`.
 
 ## Project Structure
 
@@ -72,6 +74,7 @@ src/
   evaluation/       # FID, SSIM, Moran's I
   data/             # Dataset, preprocessing
 scripts/            # Figure generation scripts
+demo/               # Generator weights + curated historical fires for app.py
 docs/               # Figures and supporting assets
 outputs/
   checkpoints/run48/checkpoint_best_final.pt
